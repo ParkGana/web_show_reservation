@@ -35,41 +35,4 @@
 		<property name="username" value="web_show_reservation" />
 		<property name="password" value="web_show_reservation" />
 	</bean>
-
-	<!-- Mybatis와 spring을 연동하기 위한 sqlSessionFactory == db 연결 및 SQL 실행하는 객체 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<!-- DataSource Dependency Injection -->
-		<property name="dataSource" ref="dataSource" />
-		<!-- XML Mapper 인식하게 설정 -->
-		<property name="mapperLocations" value="classpath:myBatis/sqlmaps/*.xml" />
-
-	</bean>
-
-	<!-- SQLSessionTemplate 설정하기 DAO 인터페이스를 만들었기 때문에 MyBatis에서 DAO인터페이스를 구현하기 위해 필요한 작업 -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-
-	<!-- Multipart Resolver 설정: 업로드 파일 사이즈 지정 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="1000000000" />
-		<property name="maxInMemorySize" value="1000000000" />
-	</bean>
-
-	<!-- Intercepter -->
-	<mvc:interceptors>
-		<!-- 공통 Intercepter -->
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/resources/**" />
-			<mvc:exclude-mapping path="/css/**" />
-			<mvc:exclude-mapping path="/js/**" />
-			<mvc:exclude-mapping path="/image/**" />
-			<mvc:exclude-mapping path="/video/**" />
-			<mvc:exclude-mapping path="/packages/**" />
-			<mvc:exclude-mapping path="/vendor/**" />
-			<mvc:exclude-mapping path="/" />
-			<bean id="authInterceptor" class="com.pknu.interceptor.AuthInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
 </beans>
