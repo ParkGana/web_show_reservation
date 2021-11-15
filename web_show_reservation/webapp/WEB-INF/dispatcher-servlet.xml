@@ -35,4 +35,15 @@
 		<property name="username" value="web_show_reservation" />
 		<property name="password" value="web_show_reservation" />
 	</bean>
+	
+	<!-- Mybatis와 spring을 연동하기 위한 sqlSessionFactory == db 연결 및 SQL 실행하는 객체 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:myBatis/sqlmaps/*.xml" />
+	</bean>
+	
+	<!-- SQLSessionTemplate 설정하기 DAO 인터페이스를 만들었기 때문에 MyBatis에서 DAO인터페이스를 구현하기 위해 필요한 작업 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 </beans>
