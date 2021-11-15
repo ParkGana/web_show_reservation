@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Account">
+	<resultMap id="AccountMap" type="com.pknu.account.vo.AccountVo">
+		<result property="USER_ID"     column="USER_ID"     javaType="string"></result>
+		<result property="USER_PWD"    column="USER_PWD"    javaType="string"></result>
+		<result property="USER_NAME"   column="USER_NAME"   javaType="string"></result>
+		<result property="USER_PHONE"  column="USER_PHONE"  javaType="string"></result>
+		<result property="USER_BIRTH"  column="USER_BIRTH"  javaType="string"></result>
+		<result property="USER_GENDER" column="USER_GENDER" javaType="string"></result>
+	</resultMap>
+	
+	<select id="Login" parameterType="hashmap" resultType="com.pknu.account.vo.AccountVo">
+		SELECT USER_ID, USER_PWD
+		FROM   TBL_USER
+		WHERE USER_ID = #{ USER_ID }
+		  AND USER_PWD = #{ USER_PWD }
+	</select>
+	
+	<insert id="Join" parameterType="hashmap">
+		INSERT INTO TBL_USER(USER_ID, USER_PWD, USER_NAME, USER_PHONE, USER_BIRTH, USER_GENDER)
+		VALUES(#{ USER_ID }, #{ USER_PWD }, #{ USER_NAME }, #{ USER_PHONE }, #{ USER_BIRTH }, #{ USER_GENDER })
+	</insert>
+	
+	<select id="CheckID" parameterType="hashmap" resultType="com.pknu.account.vo.AccountVo">
+		SELECT USER_ID
+		FROM   TBL_USER
+		WHERE  USER_ID = #{ USER_ID }
+	</select>
+</mapper>
