@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,11 +17,11 @@
 	<div id="wrapReviewList">
 		<table id="tblReviewList">
 			<tr>
-				<th>�۹�ȣ</th>
-				<th>����</th>
-				<th>�ۼ���</th>
-				<th>�ۼ���</th>
-				<th>��ȸ��</th>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
 			</tr>
 			<tr>
 				<td>1</td>

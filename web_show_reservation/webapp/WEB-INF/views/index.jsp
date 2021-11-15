@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,23 +15,23 @@
 	<%@ include file="/WEB-INF/includes/mainmenu.jsp" %>
 	
 	<div id="wrapShow">
-		<div class="divIndexTitle">±ÝÁÖÀÇ °ø¿¬</div>
+		<div class="divIndexTitle">ê¸ˆì£¼ì˜ ê³µì—°</div>
 	</div>
 	
 	<div id="wrapSchedule">
-		<div class="divIndexTitle">°ø¿¬ ÀÏÁ¤</div>
+		<div class="divIndexTitle">ê³µì—° ì¼ì •</div>
 	</div>
 	
 	<div id="wrapRankingOfTotal">
-		<div class="divIndexTitle">ÀÎ±â °ø¿¬</div>
+		<div class="divIndexTitle">ì¸ê¸° ê³µì—°</div>
 	</div>
 	
 	<div id="wrapRankingOfCategory">
 		<div id="wrapRankingOfAge">
-			<div class="divIndexTitle">³ªÀÌ´ë</div>
+			<div class="divIndexTitle">ë‚˜ì´ëŒ€</div>
 		</div>
 		<div id="wrapRankingOfGender">
-			<div class="divIndexTitle">¼ºº°</div>
+			<div class="divIndexTitle">ì„±ë³„</div>
 		</div>
 	</div>
 	

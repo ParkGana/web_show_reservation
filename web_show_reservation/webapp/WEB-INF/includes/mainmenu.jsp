@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div id="wrapMainMenu">
-	<a class="aMainMenu" href="/show/list"><img class="imgMainMenu" src="/image/MainMenu01.png" /> °ø¿¬ ¾È³»</a>
-	<a class="aMainMenu" href="#"><img class="imgMainMenu" src="/image/MainMenu02.png" /> ÀÏÁ¤ ¾È³»</a>
-	<a class="aMainMenu" href="#"><img class="imgMainMenu" src="/image/MainMenu03.png" /> »ó¿µ°ü ¾È³»</a>
-	<a class="aMainMenu" href="/review/list"><img class="imgMainMenu" src="/image/MainMenu04.png" /> °ü¶÷ ÈÄ±â</a>
+	<a class="aMainMenu" href="/show/list"><img class="imgMainMenu" src="/image/MainMenu01.png" /> ê³µì—° ì•ˆë‚´</a>
+	<a class="aMainMenu" href="#"><img class="imgMainMenu" src="/image/MainMenu02.png" /> ì¼ì • ì•ˆë‚´</a>
+	<a class="aMainMenu" href="#"><img class="imgMainMenu" src="/image/MainMenu03.png" /> ìƒì˜ê´€ ì•ˆë‚´</a>
+	<a class="aMainMenu" href="/review/list"><img class="imgMainMenu" src="/image/MainMenu04.png" /> ê´€ëžŒ í›„ê¸°</a>
 </div>

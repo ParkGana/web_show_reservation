@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div id="wrapHeader">
 	<div id="wrapLogo">
@@ -6,8 +6,8 @@
 	</div>
 	<div id="wrapSearch"></div>
 	<div id="wrapAccount">
-		<a class="aAccount" href="/join">ȸ������</a>
-		<a class="aAccount" href="/login">�α���</a>
-		<!-- <a class="aAccount" href="/logout">�α׾ƿ�</a> -->
+		<a class="aAccount" href="/join">회원가입</a>
+		<a class="aAccount" href="/login">로그인</a>
+		<!-- <a class="aAccount" href="/logout">로그아웃</a> -->
 	</div>
 </div>

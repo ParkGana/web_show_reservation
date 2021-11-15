@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,23 +15,23 @@
 	<%@ include file="/WEB-INF/includes/mainmenu.jsp" %>
 	
 	<div id="wrapLogin">
-		<div class="divLoginTitle">�湮�� ȯ���մϴ�!</div>
+		<div class="divLoginTitle">방문을 환영합니다!</div>
 		<div id="divLogin">
 			<form method="POST" action="/login">
 				<div>
-					<p class="pLogin">���̵�</p>
+					<p class="pLogin">아이디</p>
 					<input class="inputLogin" type="text" name="USER_ID"><br>
 				</div>
 				<div>
-					<p class="pLogin">��й�ȣ</p>
+					<p class="pLogin">비밀번호</p>
 					<input class="inputLogin" type="password" name="USER_PWD"><br>
 				</div>
-				<input class="submitLogin" type="submit" value="�α���">
+				<input class="submitLogin" type="submit" value="로그인">
 			</form>
 		</div>
 		<div id="divFind">
-			<a class="aFind" href="#">���̵� ã��</a>
-			<a class="aFind" href="#">��й�ȣ ã��</a>
+			<a class="aFind" href="#">아이디 찾기</a>
+			<a class="aFind" href="#">비밀번호 찾기</a>
 		</div>
 	</div>
 	
