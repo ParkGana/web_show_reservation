@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+#wrapJoin {
+	width: 1200px;
+	margin: 100px 0;
+	clear: both;
+	text-align: center;
+}
+
+.divJoinTitle {
+	width: 700px;
+	height: 50px;
+	line-height: 50px;
+	margin: 0 auto;
+	text-align: center;
+	border-top: 3px solid lightgray;
+	border-bottom: 3px solid lightgray;
+	font-weight: bold;
+}
+
+#divJoin {
+	margin-top: 20px;
+}
+
+.pJoin {
+	display: inline-block;
+	width: 120px;
+}
+
+.inputJoin {
+	width: 400px;
+	height: 30px;
+	font-size: 18px;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+
+.selectJoin {
+	width: 125px;
+	height: 45px;
+	font-size: 18px;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+
+.labelJoin {
+	display: inline-block;
+	width: 88px;
+	margin: 10px;
+	text-align: left;
+	padding: 10px 0;
+	font-size: 16px;
+}
+
+.buttonJoin {
+	width: 100px;
+	height: 50px;
+	margin: 10px;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	font-size: 18px;
+	background-color: gray;
+	font-weight: bold;
+}
+
+.buttonJoin:hover {
+	cursor: pointer;
+	color: black;
+}
+
+.submitJoin {
+	width: 680px;
+	height: 50px;
+	margin: 20px;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	font-size: 18px;
+	background-color: gray;
+	font-weight: bold;
+}
+
+.submitJoin:hover {
+	cursor: pointer;
+	color: black;
+}

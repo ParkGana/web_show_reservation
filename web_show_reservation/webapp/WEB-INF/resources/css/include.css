@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+#wrapHeader {
+	display: inline-block;
+	clear: both;
+	margin-top: 20px;
+}
+
+#wrapLogo {
+	float: left;
+	width: 300px;
+	height: 80px;
+}
+
+.imgLogo {
+	width: 200px;
+	margin: 0 10px;
+}
+
+#wrapSearch {
+	float: left;
+	width: 600px;
+	height: 80px;
+}
+
+#wrapAccount {
+	float: right;
+	width: 300px;
+	height: 80px;
+	text-align: right;
+	font-size: 0;
+}
+
+.aAccount {
+	color: gray;
+	text-decoration: none;
+	border-right: 2px solid lightgray;
+	padding: 0 20px;
+	font-size: 12px;
+	padding: 0 20px;
+}
+
+.aAccount:last-child {
+	border-right: none;
+}
+
+.aAccount:hover {
+	color: gray;
+	font-weight: bold;
+}
+
+#wrapMainMenu {
+	display: inline-block;
+	clear: both;
+	width: 1200px;
+	height: 80px;
+	margin-top: 20px;
+	background-color: black;
+	border-radius: 10px;
+	font-size: 0;
+}
+
+.aMainMenu {
+	display: inline-block;
+	width: 300px;
+	height: 80px;
+	line-height: 80px;
+	color: white;
+	text-decoration: none;
+	font-size: 17px;
+	text-align: center;
+}
+
+.aMainMenu:hover {
+	color: gray;
+	font-weight: bold;
+}
+
+.imgMainMenu {
+	width: 50px;
+	vertical-align: middle;
+}
+
+#wrapFooter {
+	clear: both;
+	width: 1200px;
+	height: 200px;
+	margin-top: 50px;
+	background-color: black;
+	border-radius: 10px 10px 0 0;
+	width: 1200px;
+}

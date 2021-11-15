@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+#wrapShow {
+	width: 1200px;
+	height: 400px;
+	margin-top: 30px;
+	clear: both;
+}
+
+#wrapSchedule {
+	width: 1200px;
+	height: 300px;
+	margin-top: 50px;
+	clear: both;
+}
+
+#wrapRankingOfTotal {
+	width: 1200px;
+	height: 400px;
+	margin-top: 50px;
+	clear: both;
+}
+
+#wrapRankingOfCategory {
+	width: 1200px;
+	height: 400px;
+	margin-top: 50px;
+	clear: both;
+}
+
+#wrapRankingOfAge {
+	width: 575px;
+	height: 400px;
+	float: left;
+}
+
+#wrapRankingOfGender {
+	width: 575px;
+	height: 400px;
+	float: right;
+}
+
+.divIndexTitle {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-top: 3px solid lightgray;
+	border-bottom: 3px solid lightgray;
+	font-weight: bold;
+}
