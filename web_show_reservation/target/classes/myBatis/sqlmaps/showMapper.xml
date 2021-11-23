@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Show">
+	<resultMap id="ShowMap" type="com.pknu.show.vo.ShowVo">
+		<result property="SHOW_ID"         column="COM_ID"   javaType="string"></result>
+		<result property="SHOW_NAME"       column="COM_NAME" javaType="string"></result>
+		<result property="SHOW_INFO"       column="COM_NAME" javaType="string"></result>
+		<result property="SHOW_GENRE_ID"   column="COM_ID"   javaType="string"></result>
+		<result property="SHOW_GENRE_NAME" column="COM_NAME" javaType="string"></result>
+	</resultMap>
+	
+	<select id="GenreList" resultType="com.pknu.show.vo.ShowVo">
+		SELECT COM_ID SHOW_GENRE_ID, COM_NAME SHOW_GENRE_NAME
+		FROM   TBL_COM
+		WHERE  GRP_ID = 'G1'
+		  AND  PARENT_COM_ID IS NULL
+	</select>
+	
+	<select id="ShowList" resultType="com.pknu.show.vo.ShowVo">
+		SELECT   T2.COM_ID SHOW_ID, T2.COM_NAME SHOW_NAME, T1.COM_NAME SHOW_GENRE_NAME
+		FROM     TBL_COM T1, TBL_COM T2
+		WHERE    T1.COM_ID = T2.PARENT_COM_ID
+		  AND    T2.GRP_ID = 'G1'
+		  AND    T1.COM_ID LIKE '%' || #{ SHOW_GENRE_ID, jdbcType=VARCHAR } || '%'
+		ORDER BY T2.COM_NAME
+	</select>
+	
+	<select id="ShowDetail" parameterType="hashmap" resultType="com.pknu.show.vo.ShowVo">
+		SELECT T1.COM_ID SHOW_ID, T1.COM_NAME SHOW_NAME, NVL(T4.COM_NAME, ' ') SHOW_INFO
+		FROM   TBL_COM T1 LEFT JOIN
+			   (SELECT T2.COM_ID COM_ID, T3.COM_NAME COM_NAME
+			    FROM   TBL_COM T2, TBL_COM T3
+				WHERE  T2.COM_ID = T3.PARENT_COM_ID
+				  AND  T2.GRP_ID = 'G1'
+				  AND  T3.GRP_ID = 'G5') T4
+		ON     T1.COM_ID = T4.COM_ID
+		WHERE  T1.GRP_ID = 'G1'
+		  AND  T1.COM_LVL = 1
+		  AND  T1.COM_ID = #{ SHOW_ID }
+	</select>
+</mapper>

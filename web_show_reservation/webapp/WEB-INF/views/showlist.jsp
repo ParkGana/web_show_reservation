@@ -5,58 +5,43 @@
 <head>
 	<meta charset="EUC-KR">
 	<title>SHOW</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/include.css">
 	<link rel="stylesheet" href="/css/show.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="/js/show.js"></script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/includes/header.jsp" %>
 	
 	<%@ include file="/WEB-INF/includes/mainmenu.jsp" %>
 	
+	<div id="wrapGenreList">
+		<div class="divGenreList">
+			<a class="aGenreList" href="/show/list">전체</a>
+		</div>
+		<c:forEach var="genre" items="${ genreList }">
+			<div class="divGenreList">
+				<a class="aGenreList" href="/show/list?SHOW_GENRE_ID=${ genre.SHOW_GENRE_ID }">${ genre.SHOW_GENRE_NAME }</a>
+			</div>
+		</c:forEach>
+	</div>
+	
 	<div id="wrapShowList">
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
-		<div class="divShowList">
-			<img class="imgShowList" src="https://via.placeholder.com/250x300">
-			<p class="pShowList">show title</p>
-		</div>
+		<c:forEach var="show" items="${ showList }">
+			<div class="divShowList" onclick="modalShowDetail('${ show.SHOW_ID }')">
+				<div class="divImgShowList">
+					<img class="imgShowList" src="/image/show/${ show.SHOW_ID }.jpg">
+				</div>
+				<p class="pShowList">[${ show.SHOW_GENRE_NAME }] ${ show.SHOW_NAME }</p>
+			</div>
+		</c:forEach>
 	</div>
 	
 	<%@ include file="/WEB-INF/includes/footer.jsp" %>
+	
+	<%@ include file="/WEB-INF/includes/showdetail.jsp" %>
 </body>
 </html>
