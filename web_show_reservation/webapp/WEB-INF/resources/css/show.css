@@ -20,7 +20,9 @@
 }
 
 .aGenreList:hover {
-	font-weight:bold;	
+	font-weight:bold;
+	text-decoration:none;
+	color:black;
 }
 
 #wrapShowList {

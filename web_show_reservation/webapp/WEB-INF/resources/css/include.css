@@ -47,6 +47,7 @@
 .aAccount:hover {
 	color: gray;
 	font-weight: bold;
+	text-decoration:none;
 }
 
 #wrapMainMenu {
@@ -74,6 +75,7 @@
 .aMainMenu:hover {
 	color: gray;
 	font-weight: bold;
+	text-decoration:none;
 }
 
 .imgMainMenu {
