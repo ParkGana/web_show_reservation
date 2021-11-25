@@ -8,7 +8,7 @@
 	<title>JOIN</title>
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/include.css">
-	<link rel="stylesheet" href="/css/join.css">
+	<link rel="stylesheet" href="/css/account.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="/js/join.js"></script>
 </head>
