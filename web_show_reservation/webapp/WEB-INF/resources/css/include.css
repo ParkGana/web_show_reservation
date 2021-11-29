@@ -91,4 +91,35 @@
 	background-color: black;
 	border-radius: 10px 10px 0 0;
 	width: 1200px;
+	text-align:center;
+}
+
+.divFooter {
+	height:200px;
+	float:left;
+	padding:20px;
+}
+
+.divFooter:nth-child(1), .divFooter:nth-child(3) { width:150px; text-align:right; }
+.divFooter:nth-child(2), .divFooter:nth-child(4) { width:350px; text-align:left; }
+.divFooter:nth-child(5) { width:200px; text-align:center; }
+
+.iconFooter {
+	color:white;
+	font-size:80px;
+}
+
+.pFooter {
+	color:white;
+}
+
+.aFooter {
+	display:inline-block;
+	color:white;
+	font-size:30px;
+	padding:10px;
+}
+
+.aFooter:hover {
+	color:white;
 }

@@ -34,7 +34,5 @@
 			<a class="aFind" href="#">비밀번호 찾기</a>
 		</div>
 	</div>
-	
-	<%@ include file="/WEB-INF/includes/footer.jsp" %>
 </body>
 </html>
