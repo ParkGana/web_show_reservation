@@ -2,6 +2,7 @@ package com.pknu.schedule.vo;
 
 public class ScheduleVo {
 	private int    SCHEDULE_ID;
+	private String SHOW_ID;
 	private String SHOW_NAME;
 	private String SHOW_GENRE_NAME;
 	private String SCHEDULE_HALL;
@@ -13,6 +14,12 @@ public class ScheduleVo {
 	}
 	public void setSCHEDULE_ID(int SCHEDULE_ID) {
 		this.SCHEDULE_ID = SCHEDULE_ID;
+	}
+	public String getSHOW_ID() {
+		return SHOW_ID;
+	}
+	public void setSHOW_ID(String SHOW_ID) {
+		this.SHOW_ID = SHOW_ID;
 	}
 	public String getSHOW_NAME() {
 		return SHOW_NAME;
@@ -47,8 +54,8 @@ public class ScheduleVo {
 	
 	@Override
 	public String toString() {
-		return "ScheduleVo [SCHEDULE_ID=" + SCHEDULE_ID + ", SHOW_NAME=" + SHOW_NAME + ", SHOW_GENRE_NAME="
-				+ SHOW_GENRE_NAME + ", SCHEDULE_HALL=" + SCHEDULE_HALL + ", SCHEDULE_DATE=" + SCHEDULE_DATE
-				+ ", SCHEDULE_TIME=" + SCHEDULE_TIME + "]";
+		return "ScheduleVo [SCHEDULE_ID=" + SCHEDULE_ID + ", SHOW_ID=" + SHOW_ID + ", SHOW_NAME=" + SHOW_NAME
+				+ ", SHOW_GENRE_NAME=" + SHOW_GENRE_NAME + ", SCHEDULE_HALL=" + SCHEDULE_HALL + ", SCHEDULE_DATE="
+				+ SCHEDULE_DATE + ", SCHEDULE_TIME=" + SCHEDULE_TIME + "]";
 	}
 }

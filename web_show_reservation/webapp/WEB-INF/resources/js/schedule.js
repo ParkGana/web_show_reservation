@@ -12,7 +12,7 @@ function scheduleList() {
 				events.push({
 					'title' : item.show_NAME,
 					'start' : item.schedule_DATE + ' ' + item.schedule_TIME,
-					'groupId' : item.schedule_ID
+					'groupId' : item.show_ID
 				});
 			});
 		},
@@ -42,29 +42,18 @@ document.addEventListener("DOMContentLoaded", function() {
 		locale : 'ko',
 		events : scheduleList(),
 		eventClick: function(event) {
-			console.log(event.event.groupId);
 			$.ajax({
-				url: "/schedule/detail",
-				data: { SCHEDULE_ID: event.event.groupId },
+				url: "/show/detail",
+				data: { SHOW_ID: event.event.groupId },
 				dataType: "JSON",
 				success: function(data) {
-					$.ajax({
-						url: "/show/detail",
-						data: { SHOW_ID: data.show_ID },
-						dataType: "JSON",
-						success: function(data) {
-							console.log(data);
-							$("#showTitle").html(data.show_NAME);
-							$("#showContent").html(data.show_INFO);
-							$("#show-detail").modal();
-						},
-						error: function(err) {
-							alert('err1');
-						}
-					});
+					console.log(data);
+					$("#showTitle").html(data.show_NAME);
+					$("#showContent").html(data.show_INFO);
+					$("#show-detail").modal();
 				},
 				error: function(err) {
-					alert('err2');
+					alert(err);
 				}
 			});
 		}

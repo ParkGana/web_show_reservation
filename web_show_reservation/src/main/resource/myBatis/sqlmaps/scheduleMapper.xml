@@ -4,6 +4,7 @@
 <mapper namespace="Schedule">
 	<resultMap id="ScheduleMap" type="com.pknu.schedule.vo.ScheduleVo">
 		<result property="SCHEDULE_ID"     column="SCHEDULE_ID"   javaType="int"></result>
+		<result property="SHOW_ID"         column="SHOW_ID"       javaType="string"></result>
 		<result property="SHOW_NAME"       column="COM_NAME"      javaType="string"></result>
 		<result property="SHOW_GENRE_NAME" column="COM_NAME"      javaType="string"></result>
 		<result property="SCHEDULE_HALL"   column="COM_NAME"      javaType="string"></result>
@@ -11,27 +12,12 @@
 		<result property="SCHEDULE_TIME"   column="COM_NAME"      javaType="string"></result>
 	</resultMap>
 	
-	<resultMap id="ShowMap" type="com.pknu.show.vo.ShowVo">
-		<result property="SHOW_ID"         column="COM_ID"   javaType="string"></result>
-		<result property="SHOW_NAME"       column="COM_NAME" javaType="string"></result>
-		<result property="SHOW_INFO"       column="COM_NAME" javaType="string"></result>
-		<result property="SHOW_GENRE_ID"   column="COM_ID"   javaType="string"></result>
-		<result property="SHOW_GENRE_NAME" column="COM_NAME" javaType="string"></result>
-	</resultMap>
-	
 	<select id="ScheduleList" resultType="com.pknu.schedule.vo.ScheduleVo">
-		SELECT T5.SCHEDULE_ID SCHEDULE_ID, T1.COM_NAME SHOW_NAME, T2.COM_NAME SHOW_GENRE_NAME, T3.COM_NAME SCHEDULE_HALL, T5.SCHEDULE_DATE SCHEDULE_DATE, T4.COM_NAME SCHEDULE_TIME
+		SELECT T1.COM_ID SHOW_ID, T1.COM_NAME SHOW_NAME, T2.COM_NAME SHOW_GENRE_NAME, T3.COM_NAME SCHEDULE_HALL, T5.SCHEDULE_DATE SCHEDULE_DATE, T4.COM_NAME SCHEDULE_TIME
 		FROM   TBL_COM T1, TBL_COM T2, TBL_COM T3, TBL_COM T4, TBL_SCHEDULE T5
 		WHERE  T1.COM_ID = T5.SHOW_COM_ID
 		  AND  T2.COM_ID = T1.PARENT_COM_ID
 		  AND  T3.COM_ID = T5.HALL_COM_ID
 		  AND  T4.COM_ID = T5.TIME_COM_ID
-	</select>
-	
-	<select id="ScheduleDetail" parameterType="hashmap" resultType="com.pknu.show.vo.ShowVo">
-		SELECT T2.COM_ID SHOW_ID
-		FROM   TBL_SCHEDULE T1, TBL_COM T2
-		WHERE  T1.SHOW_COM_ID = T2.COM_ID
-		  AND  T1.SCHEDULE_ID = #{ SCHEDULE_ID }
 	</select>
 </mapper>
