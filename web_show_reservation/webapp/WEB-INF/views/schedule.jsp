@@ -15,6 +15,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="/js/fullcalendar.js"></script>
 	<script src="/js/schedule.js"></script>
+	<script src="/js/reservation.js"></script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/includes/header.jsp"%>
@@ -26,5 +27,7 @@
 	<%@ include file="/WEB-INF/includes/footer.jsp"%>
 	
 	<%@ include file="/WEB-INF/includes/showdetail.jsp" %>
+	
+	<%@ include file="/WEB-INF/includes/reservationList.jsp" %>
 </body>
 </html>

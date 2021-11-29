@@ -13,7 +13,7 @@
 				<a class="aAccount" href="/login">로그인</a>
 			</c:when>
 			<c:otherwise>
-				<a class="aAccount" href="#">${ user.USER_ID }</a>
+				<a class="aAccount" href="javascript:void(0);" onclick="reservationList()">${ user.USER_ID }</a>
 				<a class="aAccount" href="/logout">로그아웃</a>
 			</c:otherwise>
 		</c:choose>

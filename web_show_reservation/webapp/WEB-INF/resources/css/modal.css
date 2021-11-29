@@ -34,3 +34,31 @@
 	text-decoration:none;
 	color:black;
 }
+
+#wrapModalReservationList {
+	width: 100%;
+	clear: both;
+	text-align: center;
+}
+
+.pModalReservationList {
+	padding:20px;
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+}
+
+#tblModalReservationList {
+	width:90%;
+	margin:0 auto;
+}
+
+#tblModalReservationList tr { border-bottom:1px solid lightgray; }
+#tblModalReservationList tr:last-child { border-bottom:none; }
+
+#tblModalReservationList td:nth-child(1) { width:5%; padding:20px 10px; }
+#tblModalReservationList td:nth-child(2) { width:20%; padding:20px 10px; }
+#tblModalReservationList td:nth-child(3) { width:15%; padding:20px 10px; }
+#tblModalReservationList td:nth-child(4) { width:50%; padding:20px 10px; }
+#tblModalReservationList td:nth-child(5) { width:10%; padding:20px 10px; }
+
