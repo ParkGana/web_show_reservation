@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Hall">
+	<resultMap id="HallMap" type="com.pknu.hall.vo.HallVo">
+		<result property="HALL_ID"        column="COM_ID"   javaType="string"></result>
+		<result property="HALL_NAME"      column="COM_NAME" javaType="string"></result>
+		<result property="HALL_SEAT_ID"   column="COM_ID"   javaType="string"></result>
+		<result property="HALL_SEAT_NAME" column="COM_NAME" javaType="string"></result>
+	</resultMap>
+	
+	<select id="HallInfo" resultType="com.pknu.hall.vo.HallVo">
+		SELECT T1.COM_ID HALL_ID, T1.COM_NAME HALL_NAME, T2.COM_ID HALL_SEAT_ID, T2.COM_NAME HALL_SEAT_NAME
+		FROM   TBL_COM T1, TBL_COM T2
+		WHERE  T1.GRP_ID = 'G2'
+		  AND  T2.GRP_ID = 'G3'
+		  AND  T1.COM_ID = T2.PARENT_COM_ID
+	</select>
+</mapper>

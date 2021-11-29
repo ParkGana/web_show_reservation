@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#wrapHall {
+	width:1200px;
+	margin-top:30px;
+	clear:both;
+	text-align:center;
+}
+
+.divHall {
+	border-top:1px solid black;
+	padding:10px;
+	margin:50px 20px;
+}
+
+.divHall:first-child {
+	border:none;
+	margin:30px 20px;
+}
+
+.divHallSeat {
+	display:inline-block;
+	border:1px solid gray;
+	width:50px; height:50px;
+	line-height:50px;
+	margin:10px;
+	border-radius:5px;
+}
+
+.pHall {
+	font-size:20px;
+	font-weight:bold;
+}
