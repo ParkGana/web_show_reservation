@@ -17,12 +17,12 @@ public class AccountDaoImpl implements AccountDao {
 	
 	
 	@Override
-	public AccountVo Login(HashMap<String, Object> map) {
+	public AccountVo login(HashMap<String, Object> map) {
 		return sqlSession.selectOne("Account.Login", map);
 	}
 
 	@Override
-	public void Join(HashMap<String, Object> map) {
+	public void join(HashMap<String, Object> map) {
 		sqlSession.insert("Account.Join", map);
 	}
 

@@ -42,7 +42,7 @@ public class AccountController {
 	 ***********************************************************************************************/
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView login(HttpSession session, @RequestParam HashMap<String, Object> map) {
-		AccountVo accountVo = accountService.Login(map);
+		AccountVo accountVo = accountService.login(map);
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -117,7 +117,7 @@ public class AccountController {
 		
 		map.put("USER_BIRTH", user_birth);
 		
-		accountService.Join(map);
+		accountService.join(map);
 		
 		return "redirect:/login";
 	}

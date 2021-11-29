@@ -6,9 +6,9 @@ import com.pknu.account.vo.AccountVo;
 
 public interface AccountDao {
 
-	public AccountVo Login(HashMap<String, Object> map);
+	public AccountVo login(HashMap<String, Object> map);
 	
-	public void Join(HashMap<String, Object> map);
+	public void join(HashMap<String, Object> map);
 	
 	public AccountVo checkID(HashMap<String, Object> map);
 	

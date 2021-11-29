@@ -17,13 +17,13 @@ public class AccountServiceImpl implements AccountService {
 
 
 	@Override
-	public AccountVo Login(HashMap<String, Object> map) {
-		return accountDao.Login(map);
+	public AccountVo login(HashMap<String, Object> map) {
+		return accountDao.login(map);
 	}
 
 	@Override
-	public void Join(HashMap<String, Object> map) {
-		accountDao.Join(map);
+	public void join(HashMap<String, Object> map) {
+		accountDao.join(map);
 	}
 
 	@Override
