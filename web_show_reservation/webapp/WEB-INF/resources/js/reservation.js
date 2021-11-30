@@ -46,7 +46,60 @@ function reservationList() {
 	});
 }
 
-function test() {
-	alert();
-	$("#test").modal();
+function reservationDetail(scheduleID) {
+	$.ajax({
+		url : "/reservation/hall",
+		data: { SCHEDULE_ID: scheduleID },
+		dataType : "JSON",
+		success : function(data1) { 
+			var strHTML = "";
+			
+			$.each(data1, function(index, item) {
+				strHTML += "<div class=\"divModalHallSeat\" id=\"" +item.hall_SEAT_NAME+ "\">" +item.hall_SEAT_NAME+ "</div>";
+				
+				if(item.hall_NAME == '대극장' || item.hall_NAME == '중극장') {
+					if((index + 1) % 10 == 0) {
+						strHTML += "<br>";
+					}
+					else if((index + 1) % 5 == 0) {
+						strHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					}
+				}
+				else if(item.hall_NAME == '소극장') {
+					if((index + 1) % 6 == 0) {
+						strHTML += "<br>";
+					}
+					else if((index + 1) % 3 == 0) {
+						strHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					}
+				}
+			});
+			
+			$("#divModalReservationDetail").html(strHTML);
+			
+			$.ajax({
+				url : "/reservation/seat",
+				data: { SCHEDULE_ID: scheduleID },
+				dataType : "JSON",
+				success : function(data2) { 
+					$.each(data1, function(index1, item1) {
+						$.each(data2, function(index2, item2) {
+							if(document.getElementById(item1.hall_SEAT_NAME).innerHTML == item2.reservation_SEAT) {
+								$("#" +item1.hall_SEAT_NAME).css("background-color", "gray");
+								$("#" +item1.hall_SEAT_NAME).css("color", "white");
+							}
+						});
+					});
+				},
+				error : function(err) {
+					alert(err);
+				}
+			});
+			
+			$("#reservation-detail").modal();
+		},
+		error : function(err) {
+			alert(err);
+		}
+	});
 }

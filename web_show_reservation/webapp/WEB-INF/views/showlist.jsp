@@ -48,5 +48,7 @@
 	<%@ include file="/WEB-INF/includes/showdetail.jsp" %>
 	
 	<%@ include file="/WEB-INF/includes/reservationList.jsp" %>
+	
+	<%@ include file="/WEB-INF/includes/reservationDetail.jsp" %>
 </body>
 </html>

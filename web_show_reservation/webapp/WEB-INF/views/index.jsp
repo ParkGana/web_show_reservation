@@ -44,5 +44,7 @@
 	<%@ include file="/WEB-INF/includes/footer.jsp" %>
 	
 	<%@ include file="/WEB-INF/includes/reservationList.jsp" %>
+	
+	<%@ include file="/WEB-INF/includes/reservationDetail.jsp" %>
 </body>
 </html>

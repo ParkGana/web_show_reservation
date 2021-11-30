@@ -13,6 +13,13 @@
 		<result property="RESERVATION_DATE" column="RESERVATION_DATE" javaType="string"></result>
 	</resultMap>
 	
+	<resultMap id="HallMap" type="com.pknu.hall.vo.HallVo">
+		<result property="HALL_ID"        column="COM_ID"   javaType="string"></result>
+		<result property="HALL_NAME"      column="COM_NAME" javaType="string"></result>
+		<result property="HALL_SEAT_ID"   column="COM_ID"   javaType="string"></result>
+		<result property="HALL_SEAT_NAME" column="COM_NAME" javaType="string"></result>
+	</resultMap>
+	
 	<select id="ReservationList" parameterType="hashmap" resultType="com.pknu.reservation.vo.ReservationVo">
 		SELECT   T3.SCHEDULE_ID SCHEDULE_ID,T1.COM_NAME SHOW_NAME, T3.SCHEDULE_DATE SHOW_DATE, T2.COM_NAME SHOW_TIME
 		FROM     TBL_COM T1, TBL_COM T2, TBL_SCHEDULE T3, TBL_RESERVATION T4
@@ -22,5 +29,25 @@
 		  AND    T4.USER_ID = #{ USER_ID }
 		GROUP BY T3.SCHEDULE_ID, T1.COM_NAME, T3.SCHEDULE_DATE, T2.COM_NAME
 		ORDER BY T3.SCHEDULE_DATE DESC, T2.COM_NAME DESC
+	</select>
+	
+	<select id="ReservationHall" parameterType="hashmap" resultType="com.pknu.hall.vo.HallVo">
+		SELECT   T1.COM_ID HALL_ID, T1.COM_NAME HALL_NAME, T2.COM_ID HALL_SEAT_ID, T2.COM_NAME HALL_SEAT_NAME
+		FROM     TBL_COM T1, TBL_COM T2
+		WHERE    T1.COM_ID = T2.PARENT_COM_ID
+		  AND    T2.PARENT_COM_ID = (SELECT HALL_COM_ID
+		                             FROM   TBL_SCHEDULE
+		                             WHERE  SCHEDULE_ID = #{ SCHEDULE_ID })
+		ORDER BY LPAD(T2.COM_ID, 10, '0')
+	</select>
+	
+	<select id="ReservationSeat" parameterType="hashmap" resultType="com.pknu.reservation.vo.ReservationVo">
+		SELECT T2.COM_NAME RESERVATION_SEAT
+		FROM   TBL_COM T1, TBL_COM T2, TBL_SCHEDULE T3, TBL_RESERVATION T4
+		WHERE  T1.COM_ID = T3.SHOW_COM_ID
+		  AND  T2.COM_ID = T4.SEAT_COM_ID
+		  AND  T3.SCHEDULE_ID = T4.SCHEDULE_ID
+		  AND  T4.SCHEDULE_ID = #{ SCHEDULE_ID }
+		  AND  T4.USER_ID = #{ USER_ID }
 	</select>
 </mapper>

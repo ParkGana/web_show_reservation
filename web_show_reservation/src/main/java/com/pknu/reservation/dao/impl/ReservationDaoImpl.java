@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.pknu.hall.vo.HallVo;
 import com.pknu.reservation.dao.ReservationDao;
 import com.pknu.reservation.vo.ReservationVo;
 
@@ -20,6 +21,16 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public List<ReservationVo> reservationList(HashMap<String, Object> map) {
 		return sqlSession.selectList("Reservation.ReservationList", map);
+	}
+
+	@Override
+	public List<HallVo> reservationHall(HashMap<String, Object> map) {
+		return sqlSession.selectList("Reservation.ReservationHall", map);
+	}
+
+	@Override
+	public List<ReservationVo> reservationSeat(HashMap<String, Object> map) {
+		return sqlSession.selectList("Reservation.ReservationSeat", map);
 	}
 	
 }
