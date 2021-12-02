@@ -24,12 +24,12 @@ public class ScheduleController {
 	 * 공연 일정 페이지 접근
 	 ***********************************************************************************************/
 	@RequestMapping(value="/schedule")
-	public String schedule() {
+	public String schedulePage() {
 		return "/schedule";
 	}
 	
 	/***********************************************************************************************
-	 * 공연 일정 가져오기 (ajax)
+	 * 공연 일정 (ajax)
 	 ***********************************************************************************************/
 	@RequestMapping(value="/schedule/fullcalendar")
 	@ResponseBody
@@ -38,11 +38,12 @@ public class ScheduleController {
 	}
 	
 	/***********************************************************************************************
-	 * 공연 상영관 정보 가져오기 (ajax)
+	 * 공연 상영관 정보 (ajax)
 	 ***********************************************************************************************/
 	@RequestMapping(value="/schedule/hall")
 	@ResponseBody
 	public List<HallVo> scheduleHall(@RequestParam HashMap<String, Object> map) {
 		return scheduleService.scheduleHall(map);
 	}
+	
 }

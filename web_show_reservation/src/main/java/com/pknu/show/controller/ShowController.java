@@ -23,8 +23,8 @@ public class ShowController {
 	/***********************************************************************************************
 	 * 공연 안내 페이지 접근
 	 ***********************************************************************************************/
-	@RequestMapping(value="/show/list")
-	public ModelAndView showList(@RequestParam HashMap<String, Object> map) {
+	@RequestMapping(value="/show")
+	public ModelAndView showPage(@RequestParam HashMap<String, Object> map) {
 		List<ShowVo> genreList = showService.genreList();
 		List<ShowVo> showList = showService.showList(map);
 		
@@ -32,13 +32,13 @@ public class ShowController {
 		
 		mv.addObject("genreList", genreList);
 		mv.addObject("showList", showList);
-		mv.setViewName("showlist");
+		mv.setViewName("show");
 		
 		return mv;
 	}
 	
 	/***********************************************************************************************
-	 * 공연 상세정보 가져오기 (ajax)
+	 * 공연 상세정보 (ajax)
 	 ***********************************************************************************************/
 	@RequestMapping(value="/show/detail")
 	@ResponseBody

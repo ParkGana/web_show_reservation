@@ -39,21 +39,28 @@ public class ReservationController {
 	 * 공연 예매 페이지 접근
 	 ***********************************************************************************************/
 	@RequestMapping(value="/reservation")
-	public ModelAndView reservation(@RequestParam HashMap<String, Object> map) {
-		ShowVo showVo = showService.showDetail(map);
-		List<ScheduleVo> scheduleVo = scheduleService.scheduleList(map);
-		
+	public ModelAndView reservationPage(HttpSession session, @RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 
-		mv.addObject("showInfo", showVo);
-		mv.addObject("scheduleList", scheduleVo);
-		mv.setViewName("reservation");
+		// 로그인 되어있는 경우
+		if (session.getAttribute("user") != null) {
+			ShowVo showVo = showService.showDetail(map);
+			List<ScheduleVo> scheduleVo = scheduleService.scheduleList(map);
+
+			mv.addObject("showInfo", showVo);
+			mv.addObject("scheduleList", scheduleVo);
+			mv.setViewName("reservation");
+		}
+		// 로그인 되어있지 않은 경우
+		else {
+			mv.setViewName("reservation");
+		}
 
 		return mv;
 	}
 	
 	/***********************************************************************************************
-	 * 공연 예매
+	 * 공연 예매 (ajax)
 	 ***********************************************************************************************/
 	@RequestMapping(value="/reservation", method=RequestMethod.POST)
 	@ResponseBody
@@ -64,7 +71,7 @@ public class ReservationController {
 	}
 	
 	/***********************************************************************************************
-	 * 선택한 공연의 예매 좌석 정보 가져오기 (ajax)
+	 * 선택한 공연의 예매 좌석 정보 (ajax)
 	 ***********************************************************************************************/
 	@RequestMapping(value="/reservation/seat")
 	@ResponseBody
@@ -73,7 +80,7 @@ public class ReservationController {
 	}
 	
 	/***********************************************************************************************
-	 * 로그인한 사용자의 예매 목록 가져오기 (ajax)
+	 * 로그인한 사용자의 예매 목록 (ajax)
 	 ***********************************************************************************************/
 	@RequestMapping(value="/reservation/list/my")
 	@ResponseBody
@@ -84,7 +91,7 @@ public class ReservationController {
 	}
 	
 	/***********************************************************************************************
-	 * 로그인한 사용자의 예매 좌석 정보 가져오기 (ajax)
+	 * 로그인한 사용자의 예매 좌석 정보 (ajax)
 	 ***********************************************************************************************/
 	@RequestMapping(value="/reservation/seat/my")
 	@ResponseBody

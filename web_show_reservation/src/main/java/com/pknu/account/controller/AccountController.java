@@ -26,7 +26,7 @@ public class AccountController {
 	 * 로그인 페이지 접근
 	 ***********************************************************************************************/
 	@RequestMapping(value="/login")
-	public String login(HttpSession session) {
+	public String loginPage(HttpSession session) {
 		// 로그인 되어있는 경우
 		if (session.getAttribute("user") != null) {
 			return "redirect:/";
@@ -81,7 +81,7 @@ public class AccountController {
 	 * 회원가입 페이지 접근
 	 ***********************************************************************************************/
 	@RequestMapping(value="/join")
-	public String join(HttpSession session) {
+	public String joinPage(HttpSession session) {
 		// 로그인 되어있는 경우
 		if (session.getAttribute("user") != null) {
 			return "redirect:/";
@@ -98,6 +98,9 @@ public class AccountController {
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String join(@RequestParam HashMap<String, Object> map) {
 		String user_birth_month = "";
+		String user_birth_day = "";
+		
+		// user_birth_month 처리
 		if(Integer.parseInt((String) map.get("USER_BIRTH_MONTH")) < 10) {
 			user_birth_month = "0" +map.get("USER_BIRTH_MONTH");
 		}
@@ -105,7 +108,7 @@ public class AccountController {
 			user_birth_month = (String) map.get("USER_BIRTH_MONTH");
 		}
 		
-		String user_birth_day = "";
+		// user_birth_day 처리
 		if(Integer.parseInt((String) map.get("USER_BIRTH_DAY")) < 10) {
 			user_birth_day = "0" +map.get("USER_BIRTH_DAY");
 		}

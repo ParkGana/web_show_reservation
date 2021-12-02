@@ -21,7 +21,7 @@ public class HallController {
 	 * 상영관 안내 페이지 접근
 	 ***********************************************************************************************/
 	@RequestMapping(value="/hall")
-	public ModelAndView hall() {
+	public ModelAndView hallPage() {
 		List<HallVo> hallInfo = hallService.hallInfo();
 		
 		ModelAndView mv = new ModelAndView();

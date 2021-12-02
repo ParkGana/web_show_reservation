@@ -78,7 +78,7 @@
 					<label class="labelJoin"></label>
 					<p class="pJoin"></p>
 				</div>
-				<input class="submitJoin" type="button" value="회원가입" onclick="submitJoin()">
+				<input class="submitJoin" type="button" value="회원가입" onclick="join()">
 			</form>
 		</div>
 	</div>
