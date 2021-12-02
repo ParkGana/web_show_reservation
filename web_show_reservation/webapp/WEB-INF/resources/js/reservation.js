@@ -119,7 +119,7 @@ function reservationChoice(scheduleID) {
 				strHTML += "<div id=\"wrapReservationSeat\">";
 				strHTML += "<div class=\"divReservationSeat\" id=\"divReservationSeat" +item.hall_SEAT_NAME+ "\">";
 				strHTML += "<input type=\"checkbox\" class=\"checkReservationSeat\" id=\"checkReservationSeat" +item.hall_SEAT_NAME+ "\" name=\"RESERVATION_SEAT\" value=\"" +item.hall_SEAT_ID+ "\" />";
-				strHTML += "<label for=\"checkReservationSeat" +item.hall_SEAT_NAME+ "\" class=\"RESERVATION_SEAT\" id=\"checkReservationSeat" +item.hall_SEAT_NAME+ "\">" +item.hall_SEAT_NAME+ "</label>";
+				strHTML += "<label for=\"checkReservationSeat" +item.hall_SEAT_NAME+ "\">" +item.hall_SEAT_NAME+ "</label>";
 				strHTML += "</div>";
 				strHTML += "</div>";
 				
@@ -141,7 +141,7 @@ function reservationChoice(scheduleID) {
 				}
 			});
 			
-			strHTML += "<input type=\"button\" value=\"예매하기\" onclick=\"reservation(" +scheduleID+ ")\"/>";
+			strHTML += "<input type=\"button\" class=\"btnReservation\" value=\"선택\" onclick=\"reservation(" +scheduleID+ ")\"/>";
 			
 			$("#wrapReservation").html(strHTML);
 			
@@ -182,23 +182,31 @@ function reservation(scheduleID) {
 		list.push($(this).val());
 	});
 	
-	for(var i = 0; i < list.length; i++) {
-		$.ajax({
-			url : "/reservation",
-			data: { SCHEDULE_ID: scheduleID, RESERVATION_SEAT: list[i] },
-			type: "POST",
-			dataType : "JSON",
-			async : false,
-			success : function(data) {
-
-			},
-			error : function(err) {
-				alert(err);
-			}
-		});
+	if (list.length == 0) {
+		alert("좌석을 선택해 주세요.");
 	}
-	
-	alert("예매가 완료되었습니다.");
+	else if(list.length > 4) {
+		alert("최대 4개 좌석까지 선택 가능합니다.");
+	}
+	else {
+		for(var i = 0; i < list.length; i++) {
+			$.ajax({
+				url : "/reservation",
+				data: { SCHEDULE_ID: scheduleID, RESERVATION_SEAT: list[i] },
+				type: "POST",
+				dataType : "JSON",
+				async : false,
+				success : function(data) {
+
+				},
+				error : function(err) {
+					alert(err);
+				}
+			});
+		}
+		
+		alert("예매가 완료되었습니다.");
+	}
 	
 	window.location.reload();
 }

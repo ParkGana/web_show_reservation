@@ -59,8 +59,12 @@
 #tblModalReservationList td:nth-child(1) { width:5%; padding:20px 10px; }
 #tblModalReservationList td:nth-child(2) { width:20%; padding:20px 10px; }
 #tblModalReservationList td:nth-child(3) { width:15%; padding:20px 10px; }
-#tblModalReservationList td:nth-child(4) { width:50%; padding:20px 10px; }
+#tblModalReservationList td:nth-child(4) { width:50%; padding:20px 10px; cursor:pointer; }
 #tblModalReservationList td:nth-child(5) { width:10%; padding:20px 10px; }
+
+#divModalReservationDetail {
+	text-align:center;
+}
 
 .divModalHallSeat {
 	display:inline-block;

@@ -118,3 +118,15 @@ input[class="checkReservationSeat"]+label {
 	cursor: pointer;
 	line-height: 50px;
 }
+
+.btnReservation {
+	background-color: lightgray;
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	border:none;
+	margin:10px;
+}

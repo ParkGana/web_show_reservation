@@ -17,7 +17,7 @@
 	<div id="wrapLogin">
 		<div class="divLoginTitle">방문을 환영합니다!</div>
 		<div id="divLogin">
-			<form method="POST" action="/login">
+			<form method="POST" action="/login" autocomplete="off">
 				<div>
 					<p class="pLogin">아이디</p>
 					<input class="inputLogin" type="text" name="USER_ID"><br>

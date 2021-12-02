@@ -50,6 +50,7 @@
 	max-width: 250px;
 	max-height: 300px;
 	vertical-align: middle;
+	cursor:pointer;
 }
 
 .pShowList {
@@ -57,4 +58,5 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	cursor:pointer;
 }

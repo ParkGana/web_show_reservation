@@ -5,11 +5,12 @@
 <head>
 	<meta charset="EUC-KR">
 	<title>JOIN</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/include.css">
 	<link rel="stylesheet" href="/css/account.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="/js/join.js"></script>
+	<script src="/js/account.js"></script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/includes/header.jsp" %>
@@ -19,12 +20,13 @@
 	<div id="wrapJoin">
 		<div class="divJoinTitle">방문을 환영합니다!</div>
 		<div id="divJoin">
-			<form method="POST" action="/join" name="formJoin">
+			<form method="POST" action="/join" name="formJoin" autocomplete="off">
 				<input type="hidden" id="checkID" value="false">
 				<div>
 					<p class="pJoin">아이디</p>
 					<input class="inputJoin" id="USER_ID" type="text" name="USER_ID" onchange="changeUserID()">
-					<input class="buttonJoin" id="btnID" type="button" value="중복 확인" onclick="checkUserID()">
+					<input class="btnCheckID" id="btnCheckID" type="button" value="중복 확인" onclick="checkUserID()">
+					<p class="pCheckID" id="pCheckID"><i class="fas fa-check"></i> Clear!</p>
 				</div>
 				<div>
 					<p class="pJoin">비밀번호</p>

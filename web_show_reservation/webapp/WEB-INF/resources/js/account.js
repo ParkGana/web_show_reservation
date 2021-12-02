@@ -3,7 +3,8 @@
  ***********************************************************************************************/
 function changeUserID() {
 	$("#checkID").val("false");
-	$("#btnID").val("중복 확인");
+	$("#btnCheckID").css("display", "inline-block");
+	$("#pCheckID").css("display", "none");
 }
 
 /***********************************************************************************************
@@ -27,7 +28,8 @@ function checkUserID() {
 				alert("사용 가능한 아이디입니다.");
 				
 				$("#checkID").val("true");
-				$("#btnID").val("확인 완료");
+				$("#btnCheckID").css("display", "none");
+				$("#pCheckID").css("display", "inline-block");
 			}
 		});
 	}
