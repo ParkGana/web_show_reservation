@@ -1,12 +1,15 @@
 package com.pknu.schedule.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pknu.hall.vo.HallVo;
 import com.pknu.schedule.service.ScheduleService;
 import com.pknu.schedule.vo.ScheduleVo;
 
@@ -28,9 +31,18 @@ public class ScheduleController {
 	/***********************************************************************************************
 	 * 공연 일정 가져오기 (ajax)
 	 ***********************************************************************************************/
-	@RequestMapping(value="/schedule/list")
+	@RequestMapping(value="/schedule/fullcalendar")
 	@ResponseBody
-	public List<ScheduleVo> scheduleList() {
-		return scheduleService.scheduleList();
-	}	
+	public List<ScheduleVo> scheduleFullcalendar() {
+		return scheduleService.scheduleFullcalendar();
+	}
+	
+	/***********************************************************************************************
+	 * 공연 상영관 정보 가져오기 (ajax)
+	 ***********************************************************************************************/
+	@RequestMapping(value="/schedule/hall")
+	@ResponseBody
+	public List<HallVo> scheduleHall(@RequestParam HashMap<String, Object> map) {
+		return scheduleService.scheduleHall(map);
+	}
 }

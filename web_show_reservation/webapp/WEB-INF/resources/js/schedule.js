@@ -4,7 +4,7 @@
 function scheduleList() {
 	var events = [];
 	$.ajax({
-		url : "/schedule/list",
+		url : "/schedule/fullcalendar",
 		dataType : "JSON",
 		async : false,
 		success : function(data) {

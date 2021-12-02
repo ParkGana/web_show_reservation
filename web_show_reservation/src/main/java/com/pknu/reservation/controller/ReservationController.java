@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pknu.account.vo.AccountVo;
-import com.pknu.hall.vo.HallVo;
 import com.pknu.reservation.service.ReservationService;
 import com.pknu.reservation.vo.ReservationVo;
 
@@ -24,34 +23,25 @@ public class ReservationController {
 	
 	
 	/***********************************************************************************************
-	 * 예매 목록 가져오기 (ajax)
+	 * 로그인한 사용자의 예매 목록 가져오기 (ajax)
 	 ***********************************************************************************************/
-	@RequestMapping(value="/reservation/list")
+	@RequestMapping(value="/reservation/list/my")
 	@ResponseBody
-	public List<ReservationVo> reservationList(HttpSession session, @RequestParam HashMap<String, Object> map) {
+	public List<ReservationVo> myReservationList(HttpSession session, @RequestParam HashMap<String, Object> map) {
 		map.put("USER_ID", ((AccountVo) session.getAttribute("user")).getUSER_ID());
 		
-		return reservationService.reservationList(map);
+		return reservationService.myReservationList(map);
 	}
 	
 	/***********************************************************************************************
-	 * 예매한 공연의 상영관 정보 가져오기 (ajax)
+	 * 로그인한 사용자의 예매 좌석 정보 가져오기 (ajax)
 	 ***********************************************************************************************/
-	@RequestMapping(value="/reservation/hall")
+	@RequestMapping(value="/reservation/seat/my")
 	@ResponseBody
-	public List<HallVo> reservationHall(@RequestParam HashMap<String, Object> map) {
-		return reservationService.reservationHall(map);
-	}
-	
-	/***********************************************************************************************
-	 * 예매 좌석 정보 가져오기 (ajax)
-	 ***********************************************************************************************/
-	@RequestMapping(value="/reservation/seat")
-	@ResponseBody
-	public List<ReservationVo> reservationSeat(HttpSession session, @RequestParam HashMap<String, Object> map) {
+	public List<ReservationVo> myReservationSeat(HttpSession session, @RequestParam HashMap<String, Object> map) {
 		map.put("USER_ID", ((AccountVo) session.getAttribute("user")).getUSER_ID());
 		
-		return reservationService.reservationSeat(map);
+		return reservationService.myReservationSeat(map);
 	}
 	
 }

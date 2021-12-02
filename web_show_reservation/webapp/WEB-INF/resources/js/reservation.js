@@ -3,7 +3,7 @@
  ******************************************************************************/
 function reservationList() {
 	$.ajax({
-		url : "/reservation/list",
+		url : "/reservation/list/my",
 		dataType : "JSON",
 		success : function(data) { 
 			var strHTML = "";
@@ -48,7 +48,7 @@ function reservationList() {
 
 function reservationDetail(scheduleID) {
 	$.ajax({
-		url : "/reservation/hall",
+		url : "/schedule/hall",
 		data: { SCHEDULE_ID: scheduleID },
 		dataType : "JSON",
 		success : function(data1) { 
@@ -78,7 +78,7 @@ function reservationDetail(scheduleID) {
 			$("#divModalReservationDetail").html(strHTML);
 			
 			$.ajax({
-				url : "/reservation/seat",
+				url : "/reservation/seat/my",
 				data: { SCHEDULE_ID: scheduleID },
 				dataType : "JSON",
 				success : function(data2) { 
