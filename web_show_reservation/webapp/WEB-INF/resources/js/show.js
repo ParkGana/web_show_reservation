@@ -13,7 +13,7 @@ function modalShowDetail(showID) {
 			$("#show-detail").modal();
 		},
 		error: function(err) {
-			alert(err);
+			console.log(err);
 		}
 	});
 }

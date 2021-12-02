@@ -17,7 +17,7 @@ function scheduleList() {
 			});
 		},
 		error : function(err) {
-			alert(err);
+			console.log(err);
 		}
 	});
 
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					$("#show-detail").modal();
 				},
 				error: function(err) {
-					alert(err);
+					console.log(err);
 				}
 			});
 		}

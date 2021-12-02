@@ -41,7 +41,7 @@ function reservationList() {
 			$("#reservation-list").modal();
 		},
 		error : function(err) {
-			alert(err);
+			console.log(err);
 		}
 	});
 }
@@ -92,14 +92,14 @@ function reservationDetail(scheduleID) {
 					});
 				},
 				error : function(err) {
-					alert(err);
+					console.log(err);
 				}
 			});
 			
 			$("#reservation-detail").modal();
 		},
 		error : function(err) {
-			alert(err);
+			console.log(err);
 		}
 	});
 }
@@ -162,12 +162,12 @@ function reservationChoice(scheduleID) {
 					window.scrollTo({ top: document.querySelector("#wrapReservation").offsetTop, behavior:"smooth" });
 				},
 				error : function(err) {
-					alert(err);
+					console.log(err);
 				}
 			});
 		},
 		error : function(err) {
-			alert(err);
+			console.log(err);
 		}
 	});
 }
@@ -200,7 +200,7 @@ function reservation(scheduleID) {
 
 				},
 				error : function(err) {
-					alert(err);
+					console.log(err);
 				}
 			});
 		}
