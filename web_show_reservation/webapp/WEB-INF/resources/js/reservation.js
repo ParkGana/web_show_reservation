@@ -103,3 +103,102 @@ function reservationDetail(scheduleID) {
 		}
 	});
 }
+
+/*******************************************************************************
+ * 선택한 공연의 예매 좌석 정보 가져오기 (ajax)
+ ******************************************************************************/
+function reservationChoice(scheduleID) {
+	$.ajax({
+		url : "/schedule/hall",
+		data: { SCHEDULE_ID: scheduleID },
+		dataType : "JSON",
+		success : function(data1) {
+			var strHTML = "";
+			
+			$.each(data1, function(index, item) {
+				strHTML += "<div id=\"wrapReservationSeat\">";
+				strHTML += "<div class=\"divReservationSeat\" id=\"divReservationSeat" +item.hall_SEAT_NAME+ "\">";
+				strHTML += "<input type=\"checkbox\" class=\"checkReservationSeat\" id=\"checkReservationSeat" +item.hall_SEAT_NAME+ "\" name=\"RESERVATION_SEAT\" value=\"" +item.hall_SEAT_ID+ "\" />";
+				strHTML += "<label for=\"checkReservationSeat" +item.hall_SEAT_NAME+ "\" class=\"RESERVATION_SEAT\" id=\"checkReservationSeat" +item.hall_SEAT_NAME+ "\">" +item.hall_SEAT_NAME+ "</label>";
+				strHTML += "</div>";
+				strHTML += "</div>";
+				
+				if(item.hall_NAME == '대극장' || item.hall_NAME == '중극장') {
+					if((index + 1) % 10 == 0) {
+						strHTML += "<br>";
+					}
+					else if((index + 1) % 5 == 0) {
+						strHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					}
+				}
+				else if(item.hall_NAME == '소극장') {
+					if((index + 1) % 6 == 0) {
+						strHTML += "<br>";
+					}
+					else if((index + 1) % 3 == 0) {
+						strHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					}
+				}
+			});
+			
+			strHTML += "<input type=\"button\" value=\"예매하기\" onclick=\"reservation(" +scheduleID+ ")\"/>";
+			
+			$("#wrapReservation").html(strHTML);
+			
+			$.ajax({
+				url : "/reservation/seat",
+				data: { SCHEDULE_ID: scheduleID },
+				dataType : "JSON",
+				success : function(data2) {
+					$.each(data1, function(index1, item1) {
+						$.each(data2, function(index2, item2) {
+							if($("label[for='checkReservationSeat" +item1.hall_SEAT_NAME+ "']").text() == item2.reservation_SEAT) {
+								$("#divReservationSeat" +item2.reservation_SEAT).append("<i class=\"fas fa-times iReservationSeat\"></i>");
+								$("#checkReservationSeat" +item2.reservation_SEAT).css("visibility", "hidden");
+							}
+						});
+					});
+					
+					window.scrollTo({ top: document.querySelector("#wrapReservation").offsetTop, behavior:"smooth" });
+				},
+				error : function(err) {
+					alert(err);
+				}
+			});
+		},
+		error : function(err) {
+			alert(err);
+		}
+	});
+}
+
+/*******************************************************************************
+ * 공연 예매하기 (ajax)
+ ******************************************************************************/
+function reservation(scheduleID) {
+	var list = new Array();
+	
+	$("input[name='RESERVATION_SEAT']:checked").each(function(index, item) {
+		list.push($(this).val());
+	});
+	
+	for(var i = 0; i < list.length; i++) {
+		$.ajax({
+			url : "/reservation",
+			data: { SCHEDULE_ID: scheduleID, RESERVATION_SEAT: list[i] },
+			type: "POST",
+			dataType : "JSON",
+			async : false,
+			success : function(data) {
+
+			},
+			error : function(err) {
+				alert(err);
+			}
+		});
+	}
+	
+	alert("예매가 완료되었습니다.");
+	
+	window.location.reload();
+}

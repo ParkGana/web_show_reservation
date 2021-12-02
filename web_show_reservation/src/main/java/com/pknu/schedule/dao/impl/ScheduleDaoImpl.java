@@ -22,6 +22,11 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	public List<ScheduleVo> scheduleFullcalendar() {
 		return sqlSession.selectList("Schedule.ScheduleFullcalendar");
 	}
+	
+	@Override
+	public List<ScheduleVo> scheduleList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Schedule.ScheduleList", map);
+	}
 
 	@Override
 	public List<HallVo> scheduleHall(HashMap<String, Object> map) {

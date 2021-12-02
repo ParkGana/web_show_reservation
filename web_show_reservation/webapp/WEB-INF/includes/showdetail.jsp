@@ -12,7 +12,7 @@
         <div id="wrapModalShowDetail">
         	<p class="pModalShowDetail" id="showTitle"></p>
         	<p class="pModalShowDetail" id="showContent"></p>
-        	<a class="aModalShowDetail" href="#">예매하기</a>
+        	<a class="aModalShowDetail" id="btnReservation" href="#">예매하기</a>
         </div>
       </div>
     </div>

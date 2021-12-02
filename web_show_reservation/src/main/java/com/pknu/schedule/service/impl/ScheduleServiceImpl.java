@@ -24,6 +24,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 	}
 	
 	@Override
+	public List<ScheduleVo> scheduleList(HashMap<String, Object> map) {
+		return scheduleDao.scheduleList(map);
+	}
+	
+	@Override
 	public List<HallVo> scheduleHall(HashMap<String, Object> map) {
 		return scheduleDao.scheduleHall(map);
 	}

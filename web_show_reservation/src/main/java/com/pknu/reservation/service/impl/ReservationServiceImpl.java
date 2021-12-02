@@ -18,6 +18,11 @@ public class ReservationServiceImpl implements ReservationService {
 
 	
 	@Override
+	public List<ReservationVo> reservationSeat(HashMap<String, Object> map) {
+		return reservationDao.reservationSeat(map);
+	}
+	
+	@Override
 	public List<ReservationVo> myReservationList(HashMap<String, Object> map) {
 		return reservationDao.myReservationList(map);
 	}
@@ -25,6 +30,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public List<ReservationVo> myReservationSeat(HashMap<String, Object> map) {
 		return reservationDao.myReservationSeat(map);
+	}
+
+	@Override
+	public void reservation(HashMap<String, Object> map) {
+		reservationDao.reservation(map);
 	}
 	
 }

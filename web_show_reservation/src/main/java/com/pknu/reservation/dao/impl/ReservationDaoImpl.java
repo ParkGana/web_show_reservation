@@ -18,6 +18,11 @@ public class ReservationDaoImpl implements ReservationDao {
 
 	
 	@Override
+	public List<ReservationVo> reservationSeat(HashMap<String, Object> map) {
+		return sqlSession.selectList("Reservation.ReservationSeat", map);
+	}
+	
+	@Override
 	public List<ReservationVo> myReservationList(HashMap<String, Object> map) {
 		return sqlSession.selectList("Reservation.MyReservationList", map);
 	}
@@ -25,6 +30,11 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public List<ReservationVo> myReservationSeat(HashMap<String, Object> map) {
 		return sqlSession.selectList("Reservation.MyReservationSeat", map);
+	}
+
+	@Override
+	public void reservation(HashMap<String, Object> map) {
+		sqlSession.insert("Reservation.Reservation", map);
 	}
 	
 }

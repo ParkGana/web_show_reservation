@@ -9,6 +9,7 @@ function modalShowDetail(showID) {
 		success: function(data) {
 			$("#showTitle").html(data.show_NAME);
 			$("#showContent").html(data.show_INFO);
+			$("#btnReservation").attr("href", "/reservation?SHOW_ID=" +showID);
 			$("#show-detail").modal();
 		},
 		error: function(err) {

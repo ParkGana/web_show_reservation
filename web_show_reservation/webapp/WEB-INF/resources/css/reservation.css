@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+#wrapImgShow {
+	display: inline-block;
+	width: 1200px;
+	margin-top: 30px;
+	clear: both;
+	text-align: center;
+}
+
+#divImgShow {
+	width: 1200px;
+	height: 350px;
+	float: left;
+	padding: 10px;
+}
+
+#imgShow {
+	max-width: 330px;
+	max-height: 330px;
+	vertical-align: middle;
+}
+
+#wrapScheduleList {
+	width: 1200px;
+	margin-top: 30px;
+	clear: both;
+	text-align: center;
+	padding: 10px;
+}
+
+#tblScheduleList {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#tblScheduleList tr {
+	border-bottom: 1px solid lightgray;
+}
+
+#tblScheduleList tr:last-child {
+	border-bottom: none;
+}
+
+#tblScheduleList th, #tblScheduleList td {
+	width: 20%;
+	padding: 20px 10px;
+}
+
+#aReservationSeat {
+	background-color: lightgray;
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+	width: 80px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 10px;
+}
+
+#aReservationSeat:hover {
+	text-decoration: none;
+	color: black;
+}
+
+#wrapReservation {
+	display: inline-block;
+	width: 1200px;
+	margin-top: 30px;
+	clear: both;
+	text-align: center;
+	padding: 10px;
+}
+
+#wrapReservationSeat {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+}
+
+.divReservationSeat {
+	position: relative;
+	width: 50px;
+	height: 50px;
+}
+
+.iReservationSeat {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	top: 0px;
+	left: 0px;
+	font-size: 50px;
+	line-height: 50px;
+	color: pink;
+}
+
+.checkReservationSeat {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+}
+
+.checkReservationSeat:checked {
+	opacity: 0.5;
+}
+
+input[class="checkReservationSeat"]+label {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	cursor: pointer;
+	line-height: 50px;
+}

@@ -8,6 +8,7 @@ public class ScheduleVo {
 	private String SCHEDULE_HALL;
 	private String SCHEDULE_DATE;
 	private String SCHEDULE_TIME;
+	private int    SCHEDULE_REMAIN_SEAT;
 	
 	public int getSCHEDULE_ID() {
 		return SCHEDULE_ID;
@@ -51,11 +52,18 @@ public class ScheduleVo {
 	public void setSCHEDULE_TIME(String SCHEDULE_TIME) {
 		this.SCHEDULE_TIME = SCHEDULE_TIME;
 	}
+	public int getSCHEDULE_REMAIN_SEAT() {
+		return SCHEDULE_REMAIN_SEAT;
+	}
+	public void setSCHEDULE_REMAIN_SEAT(int SCHEDULE_REMAIN_SEAT) {
+		this.SCHEDULE_REMAIN_SEAT = SCHEDULE_REMAIN_SEAT;
+	}
 	
 	@Override
 	public String toString() {
 		return "ScheduleVo [SCHEDULE_ID=" + SCHEDULE_ID + ", SHOW_ID=" + SHOW_ID + ", SHOW_NAME=" + SHOW_NAME
 				+ ", SHOW_GENRE_NAME=" + SHOW_GENRE_NAME + ", SCHEDULE_HALL=" + SCHEDULE_HALL + ", SCHEDULE_DATE="
-				+ SCHEDULE_DATE + ", SCHEDULE_TIME=" + SCHEDULE_TIME + "]";
+				+ SCHEDULE_DATE + ", SCHEDULE_TIME=" + SCHEDULE_TIME + ", SCHEDULE_REMAIN_SEAT=" + SCHEDULE_REMAIN_SEAT
+				+ "]";
 	}
 }
