@@ -23,11 +23,11 @@
 	
 	<div id="wrapGenreList">
 		<div class="divGenreList">
-			<a class="aGenreList" href="/show/list">전체</a>
+			<a class="aGenreList" href="/show">전체</a>
 		</div>
 		<c:forEach var="genre" items="${ genreList }">
 			<div class="divGenreList">
-				<a class="aGenreList" href="/show/list?SHOW_GENRE_ID=${ genre.SHOW_GENRE_ID }">${ genre.SHOW_GENRE_NAME }</a>
+				<a class="aGenreList" href="/show?SHOW_GENRE_ID=${ genre.SHOW_GENRE_ID }">${ genre.SHOW_GENRE_NAME }</a>
 			</div>
 		</c:forEach>
 	</div>

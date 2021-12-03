@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				data: { SHOW_ID: event.event.groupId },
 				dataType: "JSON",
 				success: function(data) {
-					console.log(data);
 					$("#showTitle").html(data.show_NAME);
 					$("#showContent").html(data.show_INFO);
+					$("#btnReservation").attr("href", "/reservation?SHOW_ID=" +event.event.groupId);
 					$("#show-detail").modal();
 				},
 				error: function(err) {

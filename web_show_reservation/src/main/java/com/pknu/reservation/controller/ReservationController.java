@@ -53,7 +53,7 @@ public class ReservationController {
 		}
 		// 로그인 되어있지 않은 경우
 		else {
-			mv.setViewName("reservation");
+			mv.setViewName("redirect:/login");
 		}
 
 		return mv;
