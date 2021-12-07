@@ -1,14 +1,42 @@
 @charset "UTF-8";
 
-#wrapReviewList {
+#wrapChoiceShow {
 	width:1200px;
 	margin-top:30px;
 	clear:both;
 	text-align:center;
 }
 
-#tblReviewList {
+.selectGenre {
+	width: 120px;
+	height: 45px;
+	font-size: 18px;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid gray;
+	border-radius: 10px;	
+}
+
+.selectShow {
+	width: 500px;
+	height: 45px;
+	font-size: 18px;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+
+#wrapReviewList {
 	width:1200px;
+	margin-top:30px;
+	clear:both;
+	text-align:center;
+	padding:10px;
+}
+
+#tblReviewList {
+	width:100%;
 	border-spacing:0;
 }
 
@@ -30,3 +58,105 @@
 #tblReviewList th:nth-child(3) { width:20%; }
 #tblReviewList th:nth-child(4) { width:20%; }
 #tblReviewList th:nth-child(5) { width:10%; }
+
+#tblReviewList td:nth-child(2) { cursor:pointer; }
+
+.tdReviewContent {
+	display:none;
+	text-align:left;
+}
+
+.pReviewContent {
+	margin:0 30px;
+	padding:10px;
+}
+
+.pReviewContent:nth-child(2) { color:gray; font-size:14px; }
+
+#wrapSchedule {
+	display: inline-block;
+	width: 1200px;
+	margin-top: 30px;
+	clear: both;
+	text-align: center;
+}
+
+#divImgSchedule {
+	width: 400px;
+	height: 300px;
+	float: left;
+	padding: 10px;
+}
+
+#imgSchedule {
+	max-width: 280px;
+	max-height: 280px;
+	vertical-align: middle;
+}
+
+#divSchedule {
+	width:800px;
+	height:300px;
+	float:right;
+}
+
+.pSchedule {
+	height:100px;
+	text-align:left;
+	margin:0;
+	padding:0 10px;
+	line-height:100px;
+}
+
+.pSchedule:first-child { margin-top:50px; font-size:20px; font-weight:bold; }
+.pSchedule:last-child { margin-bottom:50px; }
+
+#wrapReviewWrite {
+	display:inline-block;
+	width:1200px;
+	margin-top:50px;
+	clear:both;
+	padding:20px;
+	text-align:center;
+}
+
+.inputReview {
+	width:100%;
+	height:50px;
+	padding:20px;
+	border:none;
+	border-top:3px solid lightgray;
+}
+
+.textareaReview {
+	width:100%;
+	height:300px;
+	padding:20px;
+	border:none;
+	border-top:3px solid lightgray;
+	border-bottom:3px solid lightgray;
+	resize:none;
+}
+
+.inputReview:focus, .textareaReview {
+	outline:none;
+}
+
+.btnReviewWrite {
+	background-color:lightgray;
+	color:white;
+	text-decoration:none;
+	display:inline-block;
+	width:100px;
+	height:50px;
+	line-height:50px;
+	border:none;
+	border-radius:10px;
+	margin:10px;
+	font-weight:bold;
+}
+
+.btnReviewWrite:hover {
+	text-decoration:none;
+	color:black;
+}

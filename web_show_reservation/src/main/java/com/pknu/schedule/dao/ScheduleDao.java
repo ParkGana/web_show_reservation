@@ -14,4 +14,6 @@ public interface ScheduleDao {
 	
 	public List<HallVo> scheduleHall(HashMap<String, Object> map);
 
+	public ScheduleVo scheduleDetail(HashMap<String, Object> map);
+
 }

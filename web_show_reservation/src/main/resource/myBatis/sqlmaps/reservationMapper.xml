@@ -11,6 +11,7 @@
 		<result property="SHOW_TIME"        column="COM_NAME"         javaType="string"></result>
 		<result property="RESERVATION_SEAT" column="COM_NAME"         javaType="string"></result>
 		<result property="RESERVATION_DATE" column="RESERVATION_DATE" javaType="string"></result>
+		<result property="REVIEW_STATE"     column="REVIEW_STATE"     javaType="string"></result>
 	</resultMap>
 	
 	<select id="ReservationSeat" parameterType="hashmap" resultType="com.pknu.reservation.vo.ReservationVo">
@@ -23,13 +24,13 @@
 	</select>
 	
 	<select id="MyReservationList" parameterType="hashmap" resultType="com.pknu.reservation.vo.ReservationVo">
-		SELECT   T3.SCHEDULE_ID SCHEDULE_ID,T1.COM_NAME SHOW_NAME, T3.SCHEDULE_DATE SHOW_DATE, T2.COM_NAME SHOW_TIME
+		SELECT   T3.SCHEDULE_ID SCHEDULE_ID,T1.COM_NAME SHOW_NAME, T3.SCHEDULE_DATE SHOW_DATE, T2.COM_NAME SHOW_TIME, T4.REVIEW_STATE REVIEW_STATE
 		FROM     TBL_COM T1, TBL_COM T2, TBL_SCHEDULE T3, TBL_RESERVATION T4
 		WHERE    T1.COM_ID = T3.SHOW_COM_ID
 		  AND    T2.COM_ID = T3.TIME_COM_ID
 		  AND    T3.SCHEDULE_ID = T4.SCHEDULE_ID
 		  AND    T4.USER_ID = #{ USER_ID }
-		GROUP BY T3.SCHEDULE_ID, T1.COM_NAME, T3.SCHEDULE_DATE, T2.COM_NAME
+		GROUP BY T3.SCHEDULE_ID, T1.COM_NAME, T3.SCHEDULE_DATE, T2.COM_NAME, T4.REVIEW_STATE
 		ORDER BY T3.SCHEDULE_DATE DESC, T2.COM_NAME DESC
 	</select>
 	
@@ -44,7 +45,7 @@
 	</select>
 	
 	<insert id="Reservation" parameterType="hashmap">
-		INSERT INTO TBL_RESERVATION(RESERVATION_ID, RESERVATION_DATE, USER_ID, SCHEDULE_ID, SEAT_GRP_ID, SEAT_COM_ID)
-		VALUES((SELECT MAX(RESERVATION_ID) + 1 FROM TBL_RESERVATION), TO_DATE(SYSDATE, 'YYYY/MM/DD'), #{ USER_ID }, #{ SCHEDULE_ID }, 'G3', #{ RESERVATION_SEAT })
+		INSERT INTO TBL_RESERVATION(RESERVATION_ID, RESERVATION_DATE, USER_ID, SCHEDULE_ID, SEAT_GRP_ID, SEAT_COM_ID, REVIEW_STATE)
+		VALUES((SELECT MAX(RESERVATION_ID) + 1 FROM TBL_RESERVATION), TO_DATE(SYSDATE, 'YYYY/MM/DD'), #{ USER_ID }, #{ SCHEDULE_ID }, 'G3', #{ RESERVATION_SEAT }, 'N')
 	</insert>
 </mapper>

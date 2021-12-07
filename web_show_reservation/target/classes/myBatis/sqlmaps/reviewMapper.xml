@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Review">
+	<resultMap id="ReviewMap" type="com.pknu.review.vo.ReviewVo">
+		<result property="REVIEW_ID"      column="REVIEW_ID"      javaType="int"></result>
+		<result property="REVIEW_TITLE"   column="REVIEW_TITLE"   javaType="string"></result>
+		<result property="REVIEW_CONTENT" column="REVIEW_CONTENT" javaType="string"></result>
+		<result property="REVIEW_DATE"    column="REVIEW_DATE"    javaType="string"></result>
+		<result property="REVIEW_READ"    column="REVIEW_READ"    javaType="int"></result>
+		<result property="USER_ID"        column="USER_ID"        javaType="string"></result>
+		<result property="SCHEDULE_ID"    column="SCHEDULE_ID"    javaType="string"></result>
+		<result property="SHOW_ID"        column="COM_ID"         javaType="string"></result>
+		<result property="SHOW_NAME"      column="COM_NAME"       javaType="string"></result>
+	</resultMap>
+	
+	<select id="ReviewList" parameterType="hashmap" resultType="com.pknu.review.vo.ReviewVo">
+		SELECT   T2.COM_NAME SHOW_NAME, T4.REVIEW_ID REVIEW_ID, T4.REVIEW_TITLE REVIEW_TITLE, T4.REVIEW_CONTENT REVIEW_CONTENT, T4.REVIEW_DATE REVIEW_DATE, T4.REVIEW_READ REVIEW_READ, T4.USER_ID USER_ID
+		FROM     TBL_COM T1, TBL_COM T2, TBL_SCHEDULE T3, TBL_REVIEW T4
+		WHERE    T1.COM_ID = T2.PARENT_COM_ID
+		  AND    T2.COM_ID = T3.SHOW_COM_ID
+		  AND    T3.SCHEDULE_ID = T4.SCHEDULE_ID
+		  AND    T1.COM_ID LIKE '%' || #{ SHOW_GENRE_ID, jdbcType=VARCHAR } || '%'
+		  AND    T2.COM_ID LIKE '%' || #{ SHOW_ID, jdbcType=VARCHAR } || '%'
+		ORDER BY T4.REVIEW_DATE DESC
+	</select>
+	
+	<insert id="ReviewWrite" parameterType="hashmap">
+		INSERT INTO TBL_REVIEW(REVIEW_ID, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_READ, USER_ID, SCHEDULE_ID)
+		VALUES((SELECT NVL(MAX(REVIEW_ID), 0) + 1 FROM TBL_REVIEW), #{ REVIEW_TITLE }, #{ REVIEW_CONTENT }, TO_DATE(SYSDATE, 'YYYY/MM/DD'), 0, #{ USER_ID }, #{ SCHEDULE_ID })
+	</insert>
+	
+	<update id="ReviewWriteSuccess" parameterType="hashmap">
+		UPDATE TBL_RESERVATION
+		SET    REVIEW_STATE = 'Y'
+		WHERE  SCHEDULE_ID = #{ SCHEDULE_ID }
+	</update>
+	
+	<update id="ReviewRead" parameterType="hashmap">
+		UPDATE TBL_REVIEW
+		SET    REVIEW_READ = REVIEW_READ + 1
+		WHERE  REVIEW_ID = #{ REVIEW_ID }
+	</update>
+</mapper>

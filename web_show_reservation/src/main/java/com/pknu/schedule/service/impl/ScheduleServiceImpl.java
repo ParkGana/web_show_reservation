@@ -33,4 +33,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return scheduleDao.scheduleHall(map);
 	}
 
+	@Override
+	public ScheduleVo scheduleDetail(HashMap<String, Object> map) {
+		return scheduleDao.scheduleDetail(map);
+	}
+
 }

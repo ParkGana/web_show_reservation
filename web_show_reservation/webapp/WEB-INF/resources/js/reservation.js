@@ -139,6 +139,13 @@ function reservationList() {
 					strHTML += "<td><span class=\"badge badge-pill badge-secondary\">종료</span></td>";
 				}
 				
+				if(item.review_STATE == 'N') {
+					strHTML += "<td><a class=\"aWriteReview\" href=\"/review/write?SCHEDULE_ID=" +item.schedule_ID+ "\">리뷰 작성</a></td>";
+				}
+				else {
+					strHTML += "<td></td>";
+				}
+				
 				strHTML += "</tr>";
 			});
 			

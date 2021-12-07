@@ -9,6 +9,7 @@ public class ReservationVo {
 	private String SHOW_TIME;
 	private String RESERVATION_SEAT;
 	private String RESERVATION_DATE;
+	private String REVIEW_STATE;
 	
 	public int getRESERVATION_ID() {
 		return RESERVATION_ID;
@@ -58,11 +59,19 @@ public class ReservationVo {
 	public void setRESERVATION_DATE(String RESERVATION_DATE) {
 		this.RESERVATION_DATE = RESERVATION_DATE;
 	}
+	public String getREVIEW_STATE() {
+		return REVIEW_STATE;
+	}
+	public void setREVIEW_STATE(String REVIEW_STATE) {
+		this.REVIEW_STATE = REVIEW_STATE;
+	}
 	
 	@Override
 	public String toString() {
 		return "ReservationVo [RESERVATION_ID=" + RESERVATION_ID + ", USER_ID=" + USER_ID + ", SCHEDULE_ID="
 				+ SCHEDULE_ID + ", SHOW_NAME=" + SHOW_NAME + ", SHOW_DATE=" + SHOW_DATE + ", SHOW_TIME=" + SHOW_TIME
-				+ ", RESERVATION_SEAT=" + RESERVATION_SEAT + ", RESERVATION_DATE=" + RESERVATION_DATE + "]";
+				+ ", RESERVATION_SEAT=" + RESERVATION_SEAT + ", RESERVATION_DATE=" + RESERVATION_DATE
+				+ ", REVIEW_STATE=" + REVIEW_STATE + "]";
 	}
+	
 }

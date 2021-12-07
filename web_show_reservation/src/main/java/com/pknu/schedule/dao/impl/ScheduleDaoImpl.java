@@ -33,4 +33,9 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		return sqlSession.selectList("Schedule.ScheduleHall", map);
 	}
 
+	@Override
+	public ScheduleVo scheduleDetail(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Schedule.ScheduleDetail", map);
+	}
+
 }
