@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Index">
+	<resultMap id="IndexMap" type="com.pknu.index.vo.IndexVo">
+		<result property="ITEM_ID"   column="" javaType="string"></result>
+		<result property="ITEM_NAME" column="" javaType="string"></result>
+		<result property="ITEM_CNT"  column="" javaType="int"></result>
+	</resultMap>
+	
+	<select id="RankShow" parameterType="hashmap" resultType="com.pknu.index.vo.IndexVo">
+		SELECT   T4.COM_ID ITEM_ID, T4.COM_NAME ITEM_NAME, COUNT(*) ITEM_CNT
+		FROM     TBL_COM T4, TBL_USER T5,
+		         (
+		          SELECT   T1.COM_ID COM_ID, T2.SCHEDULE_ID SCHEDULE_ID, T3.USER_ID USER_ID
+		          FROM     TBL_COM T1, TBL_SCHEDULE T2, TBL_RESERVATION T3
+		          WHERE    T1.COM_ID = T2.SHOW_COM_ID
+		            AND    T2.SCHEDULE_ID = T3.SCHEDULE_ID
+		          GROUP BY T1.COM_ID, T2.SCHEDULE_ID, T3.USER_ID
+		         ) T6,
+		         (
+		          SELECT USER_ID USER_ID, TRUNC((EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM TO_DATE(USER_BIRTH, 'YY/MM/DD')) + 1) / 10) USER_AGE
+		          FROM   TBL_USER
+		         ) T7
+		WHERE    T4.COM_ID = T6.COM_ID
+		  AND    T5.USER_ID = T6.USER_ID
+		  AND    T5.USER_ID = T7.USER_ID
+		  AND    T5.USER_GENDER LIKE '%' || #{ USER_GENDER, jdbcType=VARCHAR } || '%'
+		  AND    T7.USER_AGE LIKE '%' || #{ USER_AGE, jdbcType=VARCHAR } || '%'
+		GROUP BY T4.COM_ID, T4.COM_NAME
+		ORDER BY COUNT(*) DESC
+	</select>
+	
+	<select id="RankGenre" resultType="com.pknu.index.vo.IndexVo">
+		SELECT   T4.COM_NAME ITEM_NAME, COUNT(*) ITEM_CNT
+		FROM     TBL_COM T4,
+				 (
+				  SELECT   T1.COM_ID COM_ID, T1.PARENT_COM_ID PARENT_COM_ID, T2.SCHEDULE_ID SCHEDULE_ID, T3.USER_ID USER_ID
+				  FROM     TBL_COM T1, TBL_SCHEDULE T2, TBL_RESERVATION T3
+				  WHERE    T1.COM_ID = T2.SHOW_COM_ID
+				    AND    T2.SCHEDULE_ID = T3.SCHEDULE_ID
+				  GROUP BY T1.COM_ID, T1.PARENT_COM_ID, T2.SCHEDULE_ID, T3.USER_ID
+				 ) T5
+		WHERE    T4.COM_ID = T5.PARENT_COM_ID
+		GROUP BY T4.COM_NAME
+	</select>
+	
+	<select id="RankGender" resultType="com.pknu.index.vo.IndexVo">
+		SELECT   DECODE(T4.USER_GENDER, 'M', '남자', '여자') ITEM_NAME, COUNT(*) ITEM_CNT
+		FROM     TBL_USER T4,
+				 (
+				  SELECT   T1.COM_ID COM_ID, T2.SCHEDULE_ID SCHEDULE_ID, T3.USER_ID USER_ID
+				  FROM     TBL_COM T1, TBL_SCHEDULE T2, TBL_RESERVATION T3
+				  WHERE    T1.COM_ID = T2.SHOW_COM_ID
+				    AND    T2.SCHEDULE_ID = T3.SCHEDULE_ID
+				  GROUP BY T1.COM_ID, T1.PARENT_COM_ID, T2.SCHEDULE_ID, T3.USER_ID
+				 ) T5
+		WHERE    T4.USER_ID = T5.USER_ID
+		GROUP BY T4.USER_GENDER
+	</select>
+	
+	<select id="RankAge" resultType="com.pknu.index.vo.IndexVo">
+		SELECT   T6.USER_AGE * 10 || '대' ITEM_NAME, COUNT(*) ITEM_CNT
+		FROM     TBL_USER T4,
+				 (
+				  SELECT   T1.COM_ID COM_ID, T2.SCHEDULE_ID SCHEDULE_ID, T3.USER_ID USER_ID
+				  FROM     TBL_COM T1, TBL_SCHEDULE T2, TBL_RESERVATION T3
+				  WHERE    T1.COM_ID = T2.SHOW_COM_ID
+				    AND    T2.SCHEDULE_ID = T3.SCHEDULE_ID
+				  GROUP BY T1.COM_ID, T1.PARENT_COM_ID, T2.SCHEDULE_ID, T3.USER_ID
+				 ) T5,
+				 (
+				  SELECT USER_ID USER_ID, TRUNC((EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM TO_DATE(USER_BIRTH, 'YY/MM/DD')) + 1) / 10) USER_AGE
+				  FROM   TBL_USER
+				 ) T6
+		WHERE    T4.USER_ID = T5.USER_ID
+		  AND    T5.USER_ID = T6.USER_ID
+		GROUP BY T6.USER_AGE
+	</select>
+</mapper>

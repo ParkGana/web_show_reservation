@@ -1,43 +1,93 @@
 @charset "UTF-8";
 
-#wrapShow {
+#wrapRankOfShow {
+	display: inline-block;
 	width: 1200px;
-	height: 400px;
 	margin-top: 30px;
 	clear: both;
 }
 
-#wrapSchedule {
+.divRankOfShow, .divRankOfGender, .divRankOfAge {
+	float: left;
+	width: 200px;
+	margin: 20px;
+}
+
+.divRankOfGender {
+	margin: 20px 42.5px;
+}
+
+.divRankOfAge {
+	margin: 20px 50px;
+}
+
+.pRankOfShow, .pRankOfGender, .pRankOfAge {
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 50px;
+	margin: 0;
+	padding: 0 10px;
+	text-align: center;
+	color: gray;
+}
+
+.divImgRankOfShow, .divImgRankOfGender, .divImgRankOfAge {
+	display: inline-block;
+	width: 200px;
+	line-height: 300px;
+	margin: 0 auto;
+}
+
+.imgRankOfShow, .imgRankOfGender, .imgRankOfAge {
+	max-width: 200px;
+	vertical-align: middle;
+}
+
+#wrapRankOfGender {
+	display: inline-block;
 	width: 1200px;
-	height: 300px;
+	margin-top: 30px;
+	clear: both;
+}
+
+#wrapRankOfGenderLeft, #wrapRankOfGenderRight {
+	width: 570px;
+	float: left;
+	margin-right: 60px;
+}
+
+#wrapRankOfGenderLeft:last-child, #wrapRankOfGenderRight:last-child {
+	margin-right: 0;
+}
+
+#wrapRankOfAge {
+	display: inline-block;
+	width: 1200px;
+	margin-top: 30px;
+	clear: both;
+}
+
+#wrapRankOfCategory {
+	display: inline-block;
+	width: 1200px;
 	margin-top: 50px;
 	clear: both;
 }
 
-#wrapRankingOfTotal {
-	width: 1200px;
-	height: 400px;
-	margin-top: 50px;
-	clear: both;
-}
-
-#wrapRankingOfCategory {
-	width: 1200px;
-	height: 400px;
-	margin-top: 50px;
-	clear: both;
-}
-
-#wrapRankingOfAge {
-	width: 575px;
+.divRankOfCategory {
+	width: 360px;
 	height: 400px;
 	float: left;
+	margin-right: 60px;
 }
 
-#wrapRankingOfGender {
-	width: 575px;
-	height: 400px;
-	float: right;
+.divRankOfCategory:last-child {
+	margin-right: 0;
+}
+
+.canvasRankOfCategory {
+	width: 100%;
+	padding: 20px;
 }
 
 .divIndexTitle {
@@ -48,4 +98,13 @@
 	border-top: 3px solid lightgray;
 	border-bottom: 3px solid lightgray;
 	font-weight: bold;
+}
+
+.pIndexTitle {
+	text-align: center;
+	padding: 10px;
+	font-weight: bold;
+	color: gray;
+	margin: 0;
+	margin-top: 20px;
 }
