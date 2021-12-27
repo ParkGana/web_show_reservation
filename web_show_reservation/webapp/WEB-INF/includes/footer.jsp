@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="divFooter" id="divRightFooter">
-		<a class="aFooter" href="#"><i class="fab fa-github"></i></a>
-		<a class="aFooter" href="#"><i class="fab fa-google-drive"></i></a>
+		<a class="aFooter" href="https://github.com/ParkGana/web_show_reservation" target="_blank"><i class="fab fa-github"></i></a>
+		<a class="aFooter" href="https://drive.google.com/drive/folders/1XUjAFJ_1OLxfFEI6MhBi99RB7_LGuYml?usp=sharing" target="_blank"><i class="fab fa-google-drive"></i></a>
 	</div>
 </div>
