@@ -70,7 +70,7 @@ function reviewList(state) {
 			
 			for(var i = 0; i < data.reviewList.length; i++) {
 				strHTML += "<tr>";
-				strHTML += "<td>" +data.reviewList[i].review_ID+ "</td>";
+				strHTML += "<td>" +(i + 1)+ "</td>";
 				strHTML += "<td onclick=\"toggleReviewContent(" +data.reviewList[i].review_ID+ ")\">" +data.reviewList[i].review_TITLE+ "</td>";
 				strHTML += "<td>" +data.reviewList[i].user_ID+ "</td>";
 				strHTML += "<td>" +data.reviewList[i].review_DATE+ "</td>";

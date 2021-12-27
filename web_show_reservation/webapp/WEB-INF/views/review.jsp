@@ -45,9 +45,9 @@
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
-			<c:forEach var="review" items="${ reviewList }">
+			<c:forEach var="review" items="${ reviewList }" varStatus="status">
 				<tr>
-					<td>${ review.REVIEW_ID }</td>
+					<td>${ status.count }</td>
 					<td onclick="toggleReviewContent(${ review.REVIEW_ID})">${ review.REVIEW_TITLE }</td>
 					<td>${ review.USER_ID }</td>
 					<td>${ review.REVIEW_DATE }</td>
