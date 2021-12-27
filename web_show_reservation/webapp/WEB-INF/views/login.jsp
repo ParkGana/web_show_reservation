@@ -29,10 +29,6 @@
 				<input class="submitLogin" type="submit" value="로그인">
 			</form>
 		</div>
-		<div id="divFind">
-			<a class="aFind" href="#">아이디 찾기</a>
-			<a class="aFind" href="#">비밀번호 찾기</a>
-		</div>
 	</div>
 </body>
 </html>
