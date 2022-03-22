@@ -4,7 +4,7 @@
 
 <div id="wrapHeader">
 	<div id="wrapLogo">
-		<a href="/"><img class="imgLogo" src="/image/logo.png" /></a>
+		<a href="/">SHOW</a>
 	</div>
 	<div id="wrapSearch"></div>
 	<div id="wrapAccount">
